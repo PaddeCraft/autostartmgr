@@ -1,0 +1,17 @@
+Name = "" # The name of the program; REQUIRED
+Description = "" # A description
+
+[service]
+ExecStartPre = "" # A command to be executed before the main program
+ExecStart = "" # The command to start the main program; REQUIRED
+ExecStartPost = "" # A command to be executed after the main program exited and wont restart anymore. Not executed with a non-zero exit-code if Restart=always in the exit section
+
+[exit]
+Restart = "never" # never, always, specific; The restart mode that should be used if the program exits with a non-zero exit code
+Attempts = 1 # Only for Policy=specific; the number of attempts made starting the program
+Timeout = 0.0 # The time (in seconds) that should be waited before restarting
+ExecOnFail = "" # A command to be exectuted if the program exits with a non-zero exit code, and will not be restarted, because the attempts are used up or it is set to Restart=never
+
+[order] # ! This is currently not implemented. 
+StartAfter = [] # List of programs (by name) needed to be started before this one ("Start after these from the list")
+StartBefore = [] # List of programs (by name) needed to be started after this one ("Start before these from the list")
