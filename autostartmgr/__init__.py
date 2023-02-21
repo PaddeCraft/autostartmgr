@@ -1,3 +1,3 @@
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 DAEMON_PORT = 10905
 SOCKET_DATA_LENGTH = 8192

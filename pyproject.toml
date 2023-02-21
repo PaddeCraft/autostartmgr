@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "autostartmgr"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["PaddeCraft <70023807+PaddeCraft@users.noreply.github.com>"]
 

@@ -18,7 +18,8 @@ def list():
             print(
                 f"[bold]{e['entry']['Name']}[/bold] ({e['file'].replace(ENTRY_FOLDER, '')}) [#828282 i]{'not ' if not e['enabled'] else ''}enabled[/#828282 i]"
             )
-            print(" \ufb0c [#828282]Desc: [/#828282]" + e["entry"]["Description"])
+            if e["entry"]["Description"]:
+                print(" \ufb0c [#828282]Desc: [/#828282]" + e["entry"]["Description"])
             print(
                 " \ufb0c [#828282]Exec: [/#828282]" + e["entry"]["service"]["ExecStart"]
             )
