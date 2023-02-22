@@ -24,7 +24,7 @@ running_jobs = []
 def merge_dicts(base, main):
     res = base.copy()
     for key in main:
-        if type(key) == dict:
+        if type(main[key]) == dict:
             res[key] = merge_dicts(base[key], main[key])
         else:
             res[key] = main[key]
