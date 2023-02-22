@@ -21,8 +21,19 @@ DEFAULT_ENTRY = {
 running_jobs = []
 
 
+def merge_dicts(base, main):
+    res = base.copy()
+    for key in main:
+        if type(key) == dict:
+            res[key] = merge_dicts(base[key], main[key])
+        else:
+            res[key] = main[key]
+
+    return res
+
+
 def parse_entry(entry: dict):
-    combined = {**DEFAULT_ENTRY, **entry}
+    combined = merge_dicts(DEFAULT_ENTRY, entry)
     if "ExecStart" in combined["service"] and "Name" in combined:
         return "", combined
     return "service.ExecStart or Name missing", {}
@@ -166,6 +177,7 @@ def handle_task(payload) -> str:
 def run_entry(entry: dict):
     global running_jobs
 
+    print(entry)
     if entry["service"]["ExecStartPre"]:
         os.system(entry["service"]["ExecStartPre"])
 
